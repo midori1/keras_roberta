@@ -18,6 +18,8 @@ def download(url, save_path='./'):
     if not os.path.isfile(os.path.join('./', filename)):
         print('Downloading data from %s' % url)
         urlretrieve(url, os.path.join(save_path, filename))
+    else:
+        print('%s exists.' % filename)
 
 
 download(DEFAULT_ENCODER_JSON)
