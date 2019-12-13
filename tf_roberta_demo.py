@@ -55,9 +55,9 @@ if __name__ == '__main__':
     input_ids = roberta.encode(text, text).unsqueeze(0)  # batch of size 1
     their_output = roberta.model(input_ids, features_only=True)[0]
 
-
     # print('\n ===== reloading and predicting =====\n')
     # model.save('test.model')
     # del model
     # model = keras.models.load_model('test.model')
     # print(model.predict([np.array([token_ids]), np.array([segment_ids])]))
+
