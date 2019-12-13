@@ -2,8 +2,8 @@ import os
 os.environ['TF_KERAS'] = '1'
 import tensorflow as tf
 from bert4keras.backend import keras
-# from keras_roberta.roberta import build_bert_model
-from bert4keras.bert import build_bert_model
+from keras_roberta.roberta import build_bert_model
+# from bert4keras.bert import build_bert_model
 from keras_roberta.tokenizer import RobertaTokenizer
 from fairseq.models.roberta import RobertaModel as FairseqRobertaModel
 import numpy as np
@@ -32,8 +32,7 @@ if __name__ == '__main__':
     roberta_dict = os.path.join(args.roberta_path, 'dict.txt')
 
     tokenizer = RobertaTokenizer(gpt_bpe_vocab, gpt_bpe_merge, roberta_dict)
-    model = build_bert_model(config_path, checkpoint_path, roberta=True,
-                             return_all_hiddens=True)  # 建立模型，加载权重
+    model = build_bert_model(config_path, checkpoint_path, roberta=True)  # 建立模型，加载权重
 
     # 编码测试
     text = "你好我是中文"
