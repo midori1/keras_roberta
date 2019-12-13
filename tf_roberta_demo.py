@@ -24,6 +24,8 @@ if __name__ == '__main__':
 
     config_path = args.tf_roberta_path + '/bert_config.json'
     checkpoint_path = os.path.join(args.tf_roberta_path, args.tf_ckpt_name)
+    if os.path.splitext(checkpoint_path)[-1] != '.ckpt':
+        checkpoint_path += '.ckpt'
 
     gpt_bpe_vocab = os.path.join(vocab_path, 'encoder.json')
     gpt_bpe_merge = os.path.join(vocab_path, 'vocab.bpe')
