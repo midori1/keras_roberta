@@ -139,6 +139,12 @@ def convert_roberta_checkpoint_to_tf(roberta_checkpoint_path, ckpt_dir, model_na
     with open(os.path.join(ckpt_dir, 'bert_config.json'), 'w') as f:
         json.dump(config.__dict__, f)
 
+    # save dict.txt
+    with open(os.path.join(roberta_checkpoint_path, 'dict.txt'), 'r') as f:
+        with open(os.path.join(ckpt_dir, 'dict.txt'), 'w') as tf:
+            for line in f:
+                tf.write(line)
+
 
 def main(raw_args=None):
     parser = argparse.ArgumentParser()
