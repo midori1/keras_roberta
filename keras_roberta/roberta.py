@@ -1,7 +1,7 @@
 #! -*- coding: utf-8 -*-
 
 """
-Implement modified from bert4keras
+Implement modified from bert4keras.bak
 """
 
 # 主要模型
