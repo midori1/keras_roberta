@@ -13,7 +13,7 @@ DEFAULT_ENCODER_JSON = 'https://dl.fbaipublicfiles.com/fairseq/gpt2_bpe/encoder.
 DEFAULT_VOCAB_BPE = 'https://dl.fbaipublicfiles.com/fairseq/gpt2_bpe/vocab.bpe'
 
 
-def download(url, save_path='./'):
+def download(url, save_path=os.path.dirname(os.path.abspath(__file__))):
     filename = os.path.basename(url)
     if not os.path.isfile(os.path.join('./', filename)):
         print('Downloading data from %s' % url)
