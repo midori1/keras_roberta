@@ -24,9 +24,9 @@ if __name__ == '__main__':
     config_path = args.tf_roberta_path + '/bert_config.json'
     checkpoint_path = os.path.join(args.tf_roberta_path, args.tf_ckpt_name)
 
-    gpt_bpe_vocab = vocab_path + 'encoder.json'
-    gpt_bpe_merge = vocab_path + 'vocab.bpe'
-    roberta_dict = args.roberta_path + '/roberta.base/dict.txt'
+    gpt_bpe_vocab = os.path.join(vocab_path, 'encoder.json')
+    gpt_bpe_merge = os.path.join(vocab_path, 'vocab.bpe')
+    roberta_dict = os.path.join(args.roberta_path, 'dict.txt')
 
     tokenizer = RobertaTokenizer(gpt_bpe_vocab, gpt_bpe_merge, roberta_dict)
     model = build_bert_model(config_path, checkpoint_path, roberta=True,
