@@ -5,8 +5,12 @@ Implement roberta based on [bert4keras](https://github.com/bojone/bert4keras)
 ## Requirments
 ```
 fair-seq
-bert4keras
 ```
+
+We modified `bert4keras` and uploaded in this repo.
+
+**TODO** 
+Use the imple in `keras_roberta/roberta`
 
 ## Usage
 
