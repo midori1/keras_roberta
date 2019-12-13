@@ -1,5 +1,8 @@
 #! -*- coding: utf-8 -*-
 # 自定义层
+"""
+Implement modified from bert4keras
+"""
 
 import tensorflow as tf
 from bert4keras.backend import keras, K

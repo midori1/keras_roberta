@@ -1,4 +1,9 @@
 #! -*- coding: utf-8 -*-
+
+"""
+Implement modified from bert4keras
+"""
+
 # 主要模型
 
 import numpy as np

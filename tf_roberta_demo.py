@@ -15,18 +15,18 @@ if __name__ == '__main__':
                         help="path to original roberta model")
     parser.add_argument("--tf_roberta_path", type=str, default='',
                         help="path to converted tf roberta model")
-    args = parser.parse_args()
-    roberta_path = args.roberta_path
-    tf_roberta_path = args.tf_roberta_path
-    vocab_path = '.keras_roberta/'
+    parser.add_argument("--tf_ckpt_name", type=str, default='',
+                        help="ckpt name")
 
-    tf_roberta_dir = roberta_path + '/tf_roberta_base'
-    config_path = tf_roberta_path + '/bert_config.json'
-    checkpoint_path = tf_roberta_path + '/tf_roberta_base.ckpt'
+    args = parser.parse_args()
+    vocab_path = 'keras_roberta/'
+
+    config_path = args.tf_roberta_path + '/bert_config.json'
+    checkpoint_path = os.path.join(args.tf_roberta_path, args.tf_ckpt_name)
 
     gpt_bpe_vocab = vocab_path + 'encoder.json'
     gpt_bpe_merge = vocab_path + 'vocab.bpe'
-    roberta_dict = roberta_path + '/roberta.base/dict.txt'
+    roberta_dict = args.roberta_path + '/roberta.base/dict.txt'
 
     tokenizer = RobertaTokenizer(gpt_bpe_vocab, gpt_bpe_merge, roberta_dict)
     model = build_bert_model(config_path, checkpoint_path, roberta=True,
@@ -49,11 +49,12 @@ if __name__ == '__main__':
     print(our_output)
 
     print('\n ===== torch model predicting =====\n')
-    roberta = FairseqRobertaModel.from_pretrained(roberta_path)
+    roberta = FairseqRobertaModel.from_pretrained(args.roberta_path)
     roberta.eval()  # disable dropout
 
     input_ids = roberta.encode(text, text).unsqueeze(0)  # batch of size 1
     their_output = roberta.model(input_ids, features_only=True)[0]
+    print(their_output)
 
     # print('\n ===== reloading and predicting =====\n')
     # model.save('test.model')

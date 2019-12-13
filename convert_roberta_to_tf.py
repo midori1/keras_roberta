@@ -144,17 +144,16 @@ def main(raw_args=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name",
                         type=str,
-                        # required=True,
                         default='tf_roberta_base',
-                        help="model name e.g. bert-base-uncased")
+                        help="model name e.g. tf_roberta_base")
     parser.add_argument("--cache_dir",
                         type=str,
-                        # required=False,
+                        required=True,
                         default='./roberta.base',
                         help="Directory containing pytorch model")
     parser.add_argument("--tf_cache_dir",
                         type=str,
-                        # required=True,
+                        required=True,
                         default='tf_roberta_base',
                         help="Directory in which to save tensorflow model")
     args = parser.parse_args(raw_args)
