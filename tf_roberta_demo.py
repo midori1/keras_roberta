@@ -1,9 +1,7 @@
 import os
 os.environ['TF_KERAS'] = '1'
 import tensorflow as tf
-# TODO use the impl in keras_roberta
 from keras_roberta.roberta import build_bert_model
-# from bert4keras.bert import build_bert_model
 from keras_roberta.tokenizer import RobertaTokenizer
 from fairseq.models.roberta import RobertaModel as FairseqRobertaModel
 import numpy as np
